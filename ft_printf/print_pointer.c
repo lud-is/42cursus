@@ -5,39 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumetral <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 18:34:50 by lumetral          #+#    #+#             */
-/*   Updated: 2024/07/22 21:31:16 by lumetral         ###   ########.fr       */
+/*   Created: 2024/07/23 17:57:41 by lumetral          #+#    #+#             */
+/*   Updated: 2024/07/23 18:03:14 by lumetral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_hexpointer(unsigned long nbr)
+static void	print_hexpointer(unsigned long nbr, int *count, int *error)
 {
-	int		count;
 	char	*base_lower;
 
-	count = 0;
 	base_lower = "0123456789abcdef";
 	if (nbr >= 16)
-		count = print_hexpointer(nbr / 16);
-	count += print_char(base_lower[nbr % 16]);
-	return (count);
+		print_hexpointer(nbr / 16, count, error);
+	print_char(base_lower[nbr % 16], count, error);
 }
 
-int	print_pointer(void *ptr)
+void	print_pointer(void *ptr, int *count, int *error)
 {
-	int				count;
 	unsigned long	address;
 
-	count = 0;
 	address = (unsigned long)ptr;
 	if (!address)
-		count = print_str("(nil)");
+		print_str("(nil)", count, error);
 	else
 	{
-		count = print_str("0x");
-		count += print_hexpointer(address);
+		print_str("0x", count, error);
+		print_hexpointer(address, count, error);
 	}
-	return (count);
 }

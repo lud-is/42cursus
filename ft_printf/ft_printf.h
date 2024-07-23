@@ -6,7 +6,7 @@
 /*   By: lumetral <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 19:48:51 by lumetral          #+#    #+#             */
-/*   Updated: 2024/07/19 13:30:03 by lumetral         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:16:06 by lumetral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@
 # include <unistd.h>
 
 int	ft_printf(const char *format, ...);
-int	print_format(va_list *ap, char specifier);
-int	print_char(int specifier);
-int	print_str(char *str);
-int	print_nbr(int nbr);
-int	print_unsigned_nbr(unsigned int nbr);
-int	print_hexlower(unsigned int nbr);
-int	print_hexupper(unsigned int nbr);
-int	print_hexpointer(unsigned long nbr);
-int	print_pointer(void *ptr);
+void	print_char(int c, int *count, int *error);
+void	print_str(char *str, int *count, int *error);
+void	print_nbr(int nbr, int *count, int *error);
+void	print_unsigned_nbr(unsigned int nbr, int *count, int *error);
+void	print_hexlower(unsigned int nbr, int *count, int *error);
+void	print_hexupper(unsigned int nbr, int *count, int *error);
+void	print_pointer(void *ptr, int *count, int *error);
 
 #endif

@@ -5,14 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumetral <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 18:28:54 by lumetral          #+#    #+#             */
-/*   Updated: 2024/07/22 21:05:15 by lumetral         ###   ########.fr       */
+/*   Created: 2024/07/23 18:00:55 by lumetral          #+#    #+#             */
+/*   Updated: 2024/07/23 18:02:33 by lumetral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char(int specifier)
+void	print_char(int c, int *count, int *error)
 {
-	return (write(1, &specifier, 1));
+	if (write(1, &c, 1) != 1)
+		*error = -1;
+	*count += 1;
 }

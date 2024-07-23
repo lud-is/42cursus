@@ -5,30 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumetral <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 18:32:55 by lumetral          #+#    #+#             */
-/*   Updated: 2024/07/22 21:29:30 by lumetral         ###   ########.fr       */
+/*   Created: 2024/07/23 18:00:10 by lumetral          #+#    #+#             */
+/*   Updated: 2024/07/23 18:19:17 by lumetral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_nbr(int nbr)
+void	print_nbr(int nbr, int *count, int *error)
 {
-	int	count;
-
-	count = 0;
 	if (nbr == -2147483648)
+		print_str("-2147483648", count, error);
+	else if (nbr < 0)
 	{
-		count = write(1, "-2147483648", 11);
-		return (count);
+		print_char('-', count, error);
+		nbr = -nbr;
+		print_nbr(nbr, count, error);
 	}
-	if (nbr < 0)
+	else if (nbr > 9)
 	{
-		count = print_char('-');
-		nbr *= -1;
+		print_nbr(nbr / 10, count, error);
+		print_nbr(nbr % 10, count, error);
 	}
-	if (nbr >= 10)
-		count += print_nbr(nbr / 10);
-	count += print_char((nbr % 10) + '0');
-	return (count);
+	else
+		print_char(nbr + '0', count, error);
 }
