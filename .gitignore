@@ -55,3 +55,6 @@ dkms.conf
 .DS_Store
 main.c
 ft_printf_all_functions.c
+
+# Folders
+backup/
