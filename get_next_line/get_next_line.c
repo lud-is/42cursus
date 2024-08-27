@@ -6,7 +6,7 @@
 /*   By: lumetral <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:30:31 by lumetral          #+#    #+#             */
-/*   Updated: 2024/08/23 09:33:50 by lumetral         ###   ########.fr       */
+/*   Updated: 2024/08/27 10:48:43 by lumetral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*extract_line(char **stock)
 {
-	size_t		len;
-	char		*line;
-	char		*new_stock;
+	char	*line;
+	char	*new_stock;
+	size_t	len;
 
 	len = 0;
 	while ((*stock)[len] && (*stock)[len] != '\n')

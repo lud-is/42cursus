@@ -6,7 +6,7 @@
 /*   By: lumetral <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 09:39:46 by lumetral          #+#    #+#             */
-/*   Updated: 2024/08/23 09:40:54 by lumetral         ###   ########.fr       */
+/*   Updated: 2024/08/27 10:52:41 by lumetral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ char	*ft_strjoin(char *stock, char *buffer)
 
 char	*ft_strdup(const char *str)
 {
+	char	*new_str;
 	size_t	len;
 	size_t	i;
-	char	*new_str;
 
 	len = ft_strlen(str);
 	new_str = malloc(len + 1);
@@ -85,10 +85,10 @@ char	*ft_strchr(const char *stock, int c)
 
 char	*ft_substr(const char *stock, size_t start, size_t len)
 {
-	size_t	line_len;
-	size_t	i;
-	size_t	stock_len;
 	char	*line;
+	size_t	line_len;
+	size_t	stock_len;
+	size_t	i;
 
 	stock_len = ft_strlen(stock);
 	if (start >= stock_len)
