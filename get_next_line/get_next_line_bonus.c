@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*extract_line(char **stock)
 {
@@ -63,18 +63,18 @@ char	*ft_fill_stock(int fd, char *stock)
 
 char	*get_next_line(int fd)
 {
-	static char	*stock = NULL;
+	static char	*stock[FD_MAX] = {NULL};
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= FD_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
-	stock = ft_fill_stock(fd, stock);
-	if (!stock || stock[0] == '\0')
+	stock[fd] = ft_fill_stock(fd, stock[fd]);
+	if (!stock[fd] || stock[fd][0] == '\0')
 	{
-		free(stock);
-		stock = NULL;
+		free(stock[fd]);
+		stock[fd] = NULL;
 		return (NULL);
 	}
-	line = extract_line(&stock);
+	line = extract_line(&stock[fd]);
 	return (line);
 }

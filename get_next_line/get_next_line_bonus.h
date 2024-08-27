@@ -22,6 +22,10 @@
 #  define BUFFER_SIZE 2147483646
 # endif
 
+# ifndef FD_MAX
+#  define FD_MAX 1024
+# endif
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
